@@ -1,0 +1,65 @@
+{
+	"name": "abdallah-personal-website",
+	"type": "module",
+	"version": "1.0.0",
+	"description": "Abdallah's personal website and blog built with Astro, Tailwind CSS, and TypeScript",
+	"author": "AbdallahAHO",
+	"license": "MIT",
+	"private": true,
+	"scripts": {
+		"dev": "astro dev",
+		"dev:network": "astro dev --host",
+		"build": "astro check && astro build",
+		"preview": "astro preview",
+		"preview:network": "astro preview --host",
+		"astro": "astro",
+		"lint": "eslint .",
+		"lint:fix": "eslint . --fix"
+	},
+	"dependencies": {
+		"@astrojs/check": "^0.5.9",
+		"@astrojs/mdx": "^2.3.1",
+		"@astrojs/react": "^3.6.2",
+		"@astrojs/rss": "^4.0.5",
+		"@astrojs/sitemap": "^3.2.0",
+		"@astrojs/tailwind": "^5.1.2",
+		"@fontsource/inter": "^5.0.17",
+		"@fontsource/lora": "^5.0.16",
+		"@tailwindcss/typography": "^0.5.15",
+		"astro": "^4.16.2",
+		"astro-compress": "^2.3.3",
+		"astro-robots-txt": "^1.0.0",
+		"clsx": "^2.1.0",
+		"react": "^18.3.1",
+		"react-dom": "^18.3.1",
+		"sharp": "^0.33.3",
+		"tailwind-merge": "^2.2.2",
+		"tailwindcss": "^3.4.13",
+		"use-last-fm": "^0.6.1"
+	},
+	"devDependencies": {
+		"@typescript-eslint/eslint-plugin": "^7.18.0",
+		"@typescript-eslint/parser": "^7.18.0",
+		"eslint": "^8.57.1",
+		"eslint-plugin-astro": "^0.32.0",
+		"eslint-plugin-jsx-a11y": "^6.8.0",
+		"prettier": "^3.3.3",
+		"prettier-plugin-astro": "^0.14.1",
+		"typescript": "^5.6.3"
+	},
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/AbdallahAHO/personal-website-2024.git"
+	},
+	"bugs": {
+		"url": "https://github.com/AbdallahAHO/personal-website-2024/issues"
+	},
+	"homepage": "https://abdallahaho.com",
+	"keywords": [
+		"astro",
+		"tailwindcss",
+		"typescript",
+		"personal-website",
+		"blog"
+	]
+}
