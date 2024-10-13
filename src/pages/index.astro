@@ -1,0 +1,179 @@
+---
+import { getCollection } from "astro:content";
+import Container from "@components/Container.astro";
+import PageLayout from "@layouts/PageLayout.astro";
+import ArrowCard from "@components/ArrowCard.astro";
+import Link from "@components/Link.astro";
+import { dateRange } from "@lib/utils";
+import { SITE, HOME, SOCIALS } from "@consts";
+
+const blog = (await getCollection("blog"))
+  .filter((post) => !post.data.draft)
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
+  .slice(0, SITE.NUM_POSTS_ON_HOMEPAGE);
+
+const projects = (await getCollection("projects"))
+  .filter((project) => !project.data.draft)
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
+  .slice(0, SITE.NUM_PROJECTS_ON_HOMEPAGE);
+
+const allwork = (await getCollection("work"))
+  .sort(
+    (a, b) =>
+      new Date(b.data.dateStart).valueOf() -
+      new Date(a.data.dateStart).valueOf()
+  )
+  .slice(0, SITE.NUM_WORKS_ON_HOMEPAGE);
+
+const work = await Promise.all(
+  allwork.map(async (item) => {
+    const { Content } = await item.render();
+    return { ...item, Content };
+  })
+);
+---
+
+<PageLayout title={HOME.TITLE} description={HOME.DESCRIPTION}>
+  <Container>
+    <h4
+      class="animate text-2xl font-semibold text-light-text dark:text-dark-text"
+    >
+      Hey there! I'm Abdallah <span class="text-xl">👋🏽</span>
+    </h4>
+    <div class="space-y-16">
+      <section>
+        <article class="space-y-4">
+          <p class="animate">
+            I'm a Senior Frontend Engineer and Technical Lead with over seven
+            years of experience turning ideas into impactful digital
+            experiences. Originally from Alexandria, Egypt, I've made my home in
+            Hamburg, Germany, where I've found the perfect mix of creative
+            energy and cultural diversity to inspire my work.
+          </p>
+          <p class="animate">
+            I love creating user-focused solutions that tackle real-world
+            problems and deliver real value. My go-to stack is TypeScript,
+            React, and Node.js, and I've got a solid background in Growth
+            Engineering to help scale and optimize things.
+          </p>
+          <p class="animate">
+            I thrive in collaborative, async, remote-first environments—the kind
+            of places where craftsmanship, transparency, and continuous learning
+            are part of the DNA.
+          </p>
+          <p class="animate">
+            Right now, I'm really into generative AI and Large Language Models
+            (LLMs), and I'm exploring how they can make user experiences even
+            more innovative and engaging.
+          </p>
+          <p class="animate">
+            Check out my latest projects, blog posts, and professional
+            adventures here. If you'd like to collaborate or just chat about
+            frontend development and AI, I'd love to connect!
+          </p>
+        </article>
+      </section>
+
+      <section class="animate space-y-6">
+        <div class="flex flex-wrap gap-y-2 items-center justify-between">
+          <h5 class="font-semibold text-light-text dark:text-dark-text">
+            Latest writings
+          </h5>
+          {blog.length > 1 && <Link href="/blog"> See all posts </Link>}
+        </div>
+        <ul class="flex flex-col gap-4">
+          {
+            blog.map((post) => (
+              <li>
+                <ArrowCard entry={post} />
+              </li>
+            ))
+          }
+        </ul>
+      </section>
+
+      <section class="animate space-y-6">
+        <div class="flex flex-wrap gap-y-2 items-center justify-between">
+          <h5 class="font-semibold text-light-text dark:text-dark-text">
+            Where I'm working now?
+          </h5>
+          {work.length !== 0 && <Link href="/work"> See all work </Link>}
+        </div>
+        <ul class="flex flex-col space-y-4">
+          {
+            work.map((entry) => (
+              <li>
+                <div class="font-semibold text-light-text dark:text-dark-text">
+                  {entry.data.company}
+                </div>
+                <div class="text-sm mb-2 opacity-75">
+                  {dateRange(entry.data.dateStart, entry.data.dateEnd)}
+                </div>
+                <article>{entry.data.brief}</article>
+              </li>
+            ))
+          }
+        </ul>
+      </section>
+
+      <section class="animate space-y-6">
+        <div class="flex flex-wrap gap-y-2 items-center justify-between">
+          <h5 class="font-semibold text-light-text dark:text-dark-text">
+            What I'm tinkering with these days?
+          </h5>
+          {
+            projects.length > 1 && (
+              <Link href="/projects"> See all projects </Link>
+            )
+          }
+        </div>
+        <ul class="flex flex-col gap-4">
+          {
+            projects.map((project) => (
+              <li>
+                <ArrowCard entry={project} />
+              </li>
+            ))
+          }
+        </ul>
+      </section>
+
+      <section class="animate space-y-4">
+        <h5 class="font-semibold text-light-text dark:text-dark-text">
+          Let's Connect
+        </h5>
+        <article>
+          <p>
+            I'm always open to new opportunities, collaborations, or just a
+            friendly chat about technology. Feel free to reach out to me on
+            social media or via email.
+          </p>
+        </article>
+        <ul class="flex flex-wrap gap-2">
+          {
+            SOCIALS.map((SOCIAL) => (
+              <li class="flex gap-x-2 text-nowrap">
+                <Link
+                  href={SOCIAL.HREF}
+                  external
+                  aria-label={`${SITE.NAME} on ${SOCIAL.NAME}`}
+                >
+                  {SOCIAL.NAME}
+                </Link>
+                {"/"}
+              </li>
+            ))
+          }
+          <li class="line-clamp-1">
+            <Link
+              href={`mailto:${SITE.EMAIL}`}
+              aria-label={`Email ${SITE.NAME}`}
+            >
+              {SITE.EMAIL}
+            </Link>
+          </li>
+        </ul>
+      </section>
+    </div>
+  </Container>
+</PageLayout>

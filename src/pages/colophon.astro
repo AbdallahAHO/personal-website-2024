@@ -1,0 +1,56 @@
+---
+import PageLayout from "@layouts/PageLayout.astro";
+import Container from "@components/Container.astro";
+---
+
+<PageLayout
+  title="Colophon"
+  description="Information about the design and technology used in this website"
+>
+  <Container>
+    <div class="space-y-10">
+      <h1
+        class="animate text-3xl font-semibold text-light-text dark:text-dark-text"
+      >
+        Colophon
+      </h1>
+
+      <section class="animate space-y-4">
+        <h2 class="text-xl font-semibold text-light-text dark:text-dark-text">
+          Typography
+        </h2>
+        <p>
+          This site uses Inter and Lora typefaces. Inter is a variable font
+          family carefully crafted for computer screens, designed by Rasmus
+          Andersson.
+        </p>
+      </section>
+
+      <section class="animate space-y-4">
+        <h2 class="text-xl font-semibold text-light-text dark:text-dark-text">
+          Technology
+        </h2>
+        <p>
+          Built with Astro, Tailwind CSS, and TypeScript. Hosted on Coolify
+          Cloud.
+        </p>
+        <p>
+          The site is optimized for performance, achieving a 100/100 Lighthouse
+          score.
+        </p>
+      </section>
+
+      <section class="animate space-y-4">
+        <h2 class="text-xl font-semibold text-light-text dark:text-dark-text">
+          Open Source
+        </h2>
+        <p>
+          This site is open source and available on <a
+            href="https://github.com/AbdallahAHO"
+            class="underline">GitHub</a
+          >.
+        </p>
+      </section>
+    </div>
+  </Container>
+</PageLayout>

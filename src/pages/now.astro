@@ -1,0 +1,29 @@
+---
+import { getEntry } from "astro:content";
+import PageLayout from "@layouts/PageLayout.astro";
+import Container from "@components/Container.astro";
+import FormattedDate from "@components/FormattedDate.astro";
+import { CurrentlyPlaying } from "@components/CurrentlyPlaying";
+import Link from "@components/Link.astro";
+
+const nowEntry = await getEntry("now", "now");
+const { Content } = await nowEntry.render();
+---
+
+<PageLayout title={nowEntry.data.title} description={nowEntry.data.description}>
+  <Container>
+    <article class="animate space-y-4">
+      <Content />
+    </article>
+
+    <div class="my-4">
+      <CurrentlyPlaying client:load />
+    </div>
+
+    <div class="my-10 text-sm italic text-light-text dark:text-dark-text">
+      Last updated: <FormattedDate date={new Date(nowEntry.data.lastUpdated)} />
+    </div>
+
+    <Link href="https://nownownow.com/about">Learn more about Now pages </Link>
+  </Container>
+</PageLayout>
