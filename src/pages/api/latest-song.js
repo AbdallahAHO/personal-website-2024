@@ -3,7 +3,7 @@ import path from "node:path";
 
 const dataFilePath = path.join(process.cwd(), "data", "latest-song.json");
 
-export const GET = async ({ request }) => {
+export const GET = async () => {
 	try {
 		const data = await readFile(dataFilePath, "utf-8");
 		return new Response(data, {
