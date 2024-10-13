@@ -6,14 +6,14 @@ lastUpdated: "2024-10-13"
 
 # What am I doing now
 
-I'm still living in Free Hanseatic Hamburg. It's been my home for the past 6 years, and I'm still enjoying the nearby Hayns and Stadt Park.
+Still hanging out in Free Hanseatic Hamburg. Been calling it home for six years now, and I'm still loving the nearby Hayns and Stadt Park—can't complain.
 
-I'm working at Lokalise as a Growth Engineer. Lately, I've been focusing on LLMs and building apps with it. I'm particularly excited about the new [OpenAI Realtime API](https://openai.com/index/introducing-the-realtime-api/).
+Working remotely at Lokalise as a Growth Engineer. Lately, I've been nerding out over LLMs and exploring building apps with them. Pretty excited about the new [OpenAI Realtime API](https://openai.com/index/introducing-the-realtime-api/). Great stuff!
 
-Lately, I've been listening to a lot of Moroccan Folk music ([Gnawa](https://open.spotify.com/track/4g0iZEHzfxbYZ5JDPREUDs?si=db2471cf4bc842ff) to be more specific) and Modern Middle Eastern Jazz ([Faraj Suleiman](https://open.spotify.com/track/2haduuaSMHdj6UE39Fbwb6?si=5e06a023ac224c5f) is Awesome).
+On the music front, I've been really into Moroccan Folk music (Gnawa , to be specific) and Modern Middle Eastern Jazz—Faraj Suleiman is absolutely killing it.
 
 #### Current Focus
 
-Shipping stuff out of the door, I've decided this year and the coming one will be more about finishing things rather than starting them. Doing it in Public helps me stay aligned with my goals and make intentional decisions about my time and energy.
+This year's all about actually finishing things instead of just starting them. Novel concept, right? Shipping stuff out the door. Doing it publicly keeps me accountable and forces me to be intentional with my time and energy.
 
-For a start getting my personal website out is crossed of my TODO list.
+First up, I finally crossed "get personal website up" off my TODO list. Progress!

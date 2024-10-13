@@ -6,5 +6,6 @@ import react from "@astrojs/react";
 
 export default defineConfig({
 	site: "https:/abdallahaho.com",
+	output: "server",
 	integrations: [mdx(), sitemap(), tailwind(), react()],
 });
