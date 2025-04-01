@@ -7,6 +7,9 @@ import { CurrentlyPlaying } from "@components/CurrentlyPlaying";
 import Link from "@components/Link.astro";
 
 const nowEntry = await getEntry("now", "now");
+if (!nowEntry) {
+  throw new Error("Now entry not found. Please create a now.md file in the content/now directory.");
+}
 const { Content } = await nowEntry.render();
 ---
 

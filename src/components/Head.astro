@@ -8,7 +8,6 @@ import inter400 from "@fontsource/inter/files/inter-latin-400-normal.woff2";
 import inter600 from "@fontsource/inter/files/inter-latin-600-normal.woff2";
 import lora400 from "@fontsource/lora/files/lora-latin-400-normal.woff2";
 import lora600 from "@fontsource/lora/files/lora-latin-600-normal.woff2";
-import { ViewTransitions } from "astro:transitions";
 
 interface Props {
   title: string;
@@ -31,6 +30,7 @@ const { title, description, image = "/nano.png" } = Astro.props;
 <meta name="generator" content={Astro.generator} />
 <script
   defer
+  is:inline
   src="https://tatob3.apps.abdallahaho.com/script.js"
   data-website-id="98441dd7-bbf4-4743-93a2-861607e40fb9"></script>
 <link
@@ -40,10 +40,10 @@ const { title, description, image = "/nano.png" } = Astro.props;
   href="https://www.abdallahaho.com/rss.xml"
 />
 <!-- Font preloads -->
-<link rel="preload" href={inter400} as="font" type="font/woff2" crossorigin />
-<link rel="preload" href={inter600} as="font" type="font/woff2" crossorigin />
-<link rel="preload" href={lora400} as="font" type="font/woff2" crossorigin />
-<link rel="preload" href={lora600} as="font" type="font/woff2" crossorigin />
+<link rel="preload" href={inter400} as="font" type="font/woff2" crossorigin="anonymous" />
+<link rel="preload" href={inter600} as="font" type="font/woff2" crossorigin="anonymous" />
+<link rel="preload" href={lora400} as="font" type="font/woff2" crossorigin="anonymous" />
+<link rel="preload" href={lora600} as="font" type="font/woff2" crossorigin="anonymous" />
 <meta name="google-site-verification" content="cLvFO5GjYD66v77m2bNUgHlXMLTBK3pNPBWsgoSWIj8" />
 
 <!-- Canonical URL -->
@@ -59,16 +59,14 @@ const { title, description, image = "/nano.png" } = Astro.props;
 <meta property="og:url" content={Astro.url} />
 <meta property="og:title" content={title} />
 <meta property="og:description" content={description} />
-<meta property="og:image" content={new URL(image, Astro.url)} />
+<meta property="og:image" content={new URL(image, Astro.url).toString()} />
 
 <!-- Twitter -->
 <meta property="twitter:card" content="summary_large_image" />
 <meta property="twitter:url" content={Astro.url} />
 <meta property="twitter:title" content={title} />
 <meta property="twitter:description" content={description} />
-<meta property="twitter:image" content={new URL(image, Astro.url)} />
-
-<ViewTransitions />
+<meta property="twitter:image" content={new URL(image, Astro.url).toString()} />
 
 <script>
   import type { TransitionBeforeSwapEvent } from "astro:transitions/client";
