@@ -15,18 +15,50 @@ const { Content } = await nowEntry.render();
 
 <PageLayout title={nowEntry.data.title} description={nowEntry.data.description}>
   <Container>
-    <article class="animate space-y-4">
-      <Content />
-    </article>
+    <div class="max-w-2xl mx-auto">
+      <div class="mb-12">
+        <h1 class="animate text-4xl font-semibold text-light-text dark:text-dark-text tracking-tight mb-4">
+          Now
+        </h1>
+        <div class="animate text-sm text-light-text/70 dark:text-dark-text/70 flex items-center gap-2">
+          <span>Last updated:</span>
+          <FormattedDate date={new Date(nowEntry.data.lastUpdated)} />
+        </div>
+      </div>
+      
+      <div class="mb-12">
+        <article class="animate prose prose-neutral dark:prose-invert max-w-none">
+          <Content />
+        </article>
+      </div>
 
-    <div class="my-4">
-      <CurrentlyPlaying client:load />
+      <div class="mb-12">
+        <div class="animate bg-light-bg/50 dark:bg-dark-bg/50 rounded-xl p-6 shadow-sm backdrop-blur-sm ring-1 ring-black/5 dark:ring-white/5">
+          <CurrentlyPlaying client:load />
+        </div>
+      </div>
+
+      <div class="animate border-t border-light-text/10 dark:border-dark-text/10 pt-8">
+        <Link 
+          href="https://nownownow.com/about" 
+          className="inline-flex items-center gap-2 text-sm group"
+          underline={false}
+        >
+          <span>Learn more about Now pages</span>
+          <svg 
+            xmlns="http://www.w3.org/2000/svg" 
+            class="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" 
+            viewBox="0 0 20 20" 
+            fill="currentColor"
+          >
+            <path 
+              fill-rule="evenodd" 
+              d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" 
+              clip-rule="evenodd" 
+            />
+          </svg>
+        </Link>
+      </div>
     </div>
-
-    <div class="my-10 text-sm italic text-light-text dark:text-dark-text">
-      Last updated: <FormattedDate date={new Date(nowEntry.data.lastUpdated)} />
-    </div>
-
-    <Link href="https://nownownow.com/about">Learn more about Now pages </Link>
   </Container>
 </PageLayout>

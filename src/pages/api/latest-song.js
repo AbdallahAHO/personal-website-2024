@@ -1,23 +1,45 @@
-import { readFile, writeFile } from 'node:fs/promises';
-import path from 'node:path';
+const LASTFM_API_KEY = 'ed1bfb5cb9c759f5a032ed7233ea462e';
+const LASTFM_USERNAME = 'AbdallahAHO';
 
-const dataFilePath = path.join(process.cwd(), 'data', 'latest-song.json');
+async function getLastFmNowPlaying() {
+	const response = await fetch(
+		`https://ws.audioscrobbler.com/2.0/?method=user.getrecenttracks&user=${LASTFM_USERNAME}&api_key=${LASTFM_API_KEY}&format=json&limit=1`
+	);
+	const data = await response.json();
+	const track = data.recenttracks?.track?.[0];
+
+	if (!track) return null;
+
+	return {
+		name: track.name,
+		artist: track.artist['#text'],
+		album: track.album['#text'],
+		art: track.image[2]['#text'],
+		url: track.url,
+		isPlaying: track['@attr']?.nowplaying === 'true'
+	};
+}
 
 export const GET = async () => {
 	try {
-		const data = await readFile(dataFilePath, 'utf-8');
-		return new Response(data, {
+		const track = await getLastFmNowPlaying();
+		
+		if (!track) {
+			return new Response(JSON.stringify({ error: 'No track found' }), {
+				status: 404,
+				headers: { 'Content-Type': 'application/json' }
+			});
+		}
+
+		return new Response(JSON.stringify(track), {
 			status: 200,
-			headers: {
-				'Content-Type': 'application/json',
-			},
+			headers: { 'Content-Type': 'application/json' }
 		});
-	} catch (_error) {
-		return new Response(JSON.stringify({ error: 'Failed to read data' }), {
+	} catch (error) {
+		console.error('Error in GET:', error);
+		return new Response(JSON.stringify({ error: 'Failed to fetch song data' }), {
 			status: 500,
-			headers: {
-				'Content-Type': 'application/json',
-			},
+			headers: { 'Content-Type': 'application/json' }
 		});
 	}
 };
