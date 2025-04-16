@@ -39,6 +39,15 @@ const { title, description, image = "/nano.png" } = Astro.props;
   title="Abdallah Othman"
   href="https://www.abdallahaho.com/rss.xml"
 />
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-WJECF45HEY"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-WJECF45HEY');
+</script>
 <!-- Font preloads -->
 <link rel="preload" href={inter400} as="font" type="font/woff2" crossorigin="anonymous" />
 <link rel="preload" href={inter600} as="font" type="font/woff2" crossorigin="anonymous" />
