@@ -76,4 +76,8 @@ export const SOCIALS: Socials = [
 		NAME: 'email',
 		HREF: `mailto:${SITE.EMAIL}`,
 	},
+	{
+		NAME: 'resume',
+		HREF: '/Abdallah Othman - Resume.pdf',
+	},
 ];

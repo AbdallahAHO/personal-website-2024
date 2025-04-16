@@ -71,15 +71,6 @@ const work = await Promise.all(
             adventures here. If you'd like to collaborate or just chat about
             frontend development and AI, I'd love to connect!
           </p>
-          <div class="animate mt-6">
-            <a
-              href="mailto:abdallah@abdallahaho.com"
-              class="inline-block px-6 py-3 rounded-lg bg-light-accent text-white dark:bg-dark-accent dark:text-dark-bg font-semibold shadow hover:scale-105 transition-transform duration-200"
-              aria-label="Contact Me"
-            >
-              Contact Me
-            </a>
-          </div>
         </article>
       </section>
 
@@ -166,6 +157,8 @@ const work = await Promise.all(
                   href={SOCIAL.HREF}
                   external
                   aria-label={`${SITE.NAME} on ${SOCIAL.NAME}`}
+                  data-umami-event={`Click on ${SOCIAL.NAME} link`}
+                  data-umami-event-url={SOCIAL.HREF}
                 >
                   {SOCIAL.NAME}
                 </Link>
