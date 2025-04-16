@@ -16,30 +16,30 @@ async function getLastFmNowPlaying() {
 		album: track.album['#text'],
 		art: track.image[2]['#text'],
 		url: track.url,
-		isPlaying: track['@attr']?.nowplaying === 'true'
+		isPlaying: track['@attr']?.nowplaying === 'true',
 	};
 }
 
 export const GET = async () => {
 	try {
 		const track = await getLastFmNowPlaying();
-		
+
 		if (!track) {
 			return new Response(JSON.stringify({ error: 'No track found' }), {
 				status: 404,
-				headers: { 'Content-Type': 'application/json' }
+				headers: { 'Content-Type': 'application/json' },
 			});
 		}
 
 		return new Response(JSON.stringify(track), {
 			status: 200,
-			headers: { 'Content-Type': 'application/json' }
+			headers: { 'Content-Type': 'application/json' },
 		});
 	} catch (error) {
 		console.error('Error in GET:', error);
 		return new Response(JSON.stringify({ error: 'Failed to fetch song data' }), {
 			status: 500,
-			headers: { 'Content-Type': 'application/json' }
+			headers: { 'Content-Type': 'application/json' },
 		});
 	}
 };
