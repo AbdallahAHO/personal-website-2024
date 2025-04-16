@@ -54,13 +54,11 @@ const CurrentlyPlaying = () => {
 		return null;
 	}
 
-	const headerText = currentSong.isPlaying ? "Currently Playing" : "Last Played";
+	const headerText = currentSong.isPlaying ? 'Currently Playing' : 'Last Played';
 
 	return (
 		<div className="animate-fade-in space-y-4">
-			<h2 className="text-xl font-semibold text-light-text dark:text-dark-text">
-				{headerText}
-			</h2>
+			<h2 className="text-xl font-semibold text-light-text dark:text-dark-text">{headerText}</h2>
 			<div className="flex items-center space-x-4 group">
 				<div className="relative">
 					<img
@@ -76,9 +74,7 @@ const CurrentlyPlaying = () => {
 					)}
 				</div>
 				<div className="flex-1 min-w-0">
-					<h3 className="font-medium text-base truncate">
-						{currentSong.name}
-					</h3>
+					<h3 className="font-medium text-base truncate">{currentSong.name}</h3>
 					<p className="text-sm text-light-text/80 dark:text-dark-text/80 truncate">
 						{currentSong.artist}
 					</p>
