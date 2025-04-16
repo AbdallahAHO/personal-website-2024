@@ -2,6 +2,7 @@
 title: "Escalay: A Space for Tinkering and Growth"
 description: "A simple tinkering space to test out and grow ideas."
 date: "Oct 13 2024"
+image: "/android-chrome-192x192.png"
 ---
 
 You know how big ideas often start as tiny, random thoughts? Well, Escalay is where I stash those.
