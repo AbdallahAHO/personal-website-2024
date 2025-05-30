@@ -1,5 +1,9 @@
+import { writeFile } from 'node:fs/promises';
+
 const LASTFM_API_KEY = 'ed1bfb5cb9c759f5a032ed7233ea462e';
 const LASTFM_USERNAME = 'AbdallahAHO';
+
+const dataFilePath = new URL('../../../data/latest-song.json', import.meta.url);
 
 async function getLastFmNowPlaying() {
 	const response = await fetch(
