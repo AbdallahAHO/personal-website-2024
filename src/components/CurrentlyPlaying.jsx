@@ -21,9 +21,31 @@ const CurrentlyPlaying = () => {
 
 	useEffect(() => {
 		fetchSong();
-		// Poll for updates every 30 seconds
+
+		const protocol = window.location.protocol === 'https:' ? 'wss' : 'ws';
+		const wsUrl = `${protocol}://${window.location.hostname}:3001`;
+		const socket = new WebSocket(wsUrl);
+
+		socket.addEventListener('message', (event) => {
+			try {
+				const data = JSON.parse(event.data);
+				setCurrentSong(data);
+			} catch (err) {
+				console.error('Failed to parse websocket message', err);
+			}
+		});
+
+		socket.addEventListener('error', (err) => {
+			console.error('WebSocket error', err);
+		});
+
+		// Poll for updates every 30 seconds as a fallback
 		const interval = setInterval(fetchSong, 30000);
-		return () => clearInterval(interval);
+
+		return () => {
+			socket.close();
+			clearInterval(interval);
+		};
 	}, [fetchSong]);
 
 	if (error) {

@@ -32,7 +32,18 @@ This is my personal website and blog, built with Astro (based on [AstroNano](htt
 
 1. Clone this repository
 2. Install dependencies: `npm install`
-3. Start the development server: `npm run dev`
+3. Copy `.env.example` to `.env` and add your Last.fm credentials
+4. Start the development server: `npm run dev`
+
+## 🔧 Environment Variables
+
+The site needs a Last.fm API key to display your currently playing track.
+Create a `.env` file using the provided example and fill in your credentials:
+
+```bash
+PUBLIC_LASTFM_API_KEY=your-api-key
+PUBLIC_LASTFM_USERNAME=your-username
+```
 
 ## 📝 Content Management
 

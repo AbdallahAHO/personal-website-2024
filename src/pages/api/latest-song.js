@@ -1,28 +1,7 @@
 import { writeFile } from 'node:fs/promises';
-
-const LASTFM_API_KEY = 'ed1bfb5cb9c759f5a032ed7233ea462e';
-const LASTFM_USERNAME = 'AbdallahAHO';
+import { getLastFmNowPlaying } from '../../lib/lastfm.js';
 
 const dataFilePath = new URL('../../../data/latest-song.json', import.meta.url);
-
-async function getLastFmNowPlaying() {
-	const response = await fetch(
-		`https://ws.audioscrobbler.com/2.0/?method=user.getrecenttracks&user=${LASTFM_USERNAME}&api_key=${LASTFM_API_KEY}&format=json&limit=1`
-	);
-	const data = await response.json();
-	const track = data.recenttracks?.track?.[0];
-
-	if (!track) return null;
-
-	return {
-		name: track.name,
-		artist: track.artist['#text'],
-		album: track.album['#text'],
-		art: track.image[2]['#text'],
-		url: track.url,
-		isPlaying: track['@attr']?.nowplaying === 'true',
-	};
-}
 
 export const GET = async () => {
 	try {
